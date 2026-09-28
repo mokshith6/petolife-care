@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PetOlife</title>
+    <style>
+        body{font-family:Arial,sans-serif;background:#f5f7fb;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0}
+        .box{background:white;padding:35px;border-radius:20px;width:90%;max-width:400px;box-shadow:0 10px 35px #0001}
+        h1{text-align:center}
+        input{width:100%;box-sizing:border-box;padding:13px;margin:8px 0;border:1px solid #ddd;border-radius:10px}
+        button{width:100%;padding:14px;background:#111;color:white;border:0;border-radius:10px;margin-top:10px;font-size:16px}
+        a{display:block;text-align:center;margin-top:18px;color:#555}
+        .msg{color:#d33;text-align:center}
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1>🐾 PetOlife</h1>
+
+    {% with messages = get_flashed_messages() %}
+      {% for message in messages %}
+        <p class="msg">{{ message }}</p>
+      {% endfor %}
+    {% endwith %}
+
+    {% if mode == "register" %}
+        <h2>Create Family Account</h2>
+        <form method="POST">
+            <input name="name" placeholder="Your name" required>
+            <input name="email" type="email" placeholder="Email" required>
+            <input name="password" type="password" placeholder="Password" required>
+            <button>Create Account</button>
+        </form>
+        <a href="/login">Already have an account? Login</a>
+    {% else %}
+        <h2>Welcome Back</h2>
+        <form method="POST">
+            <input name="email" type="email" placeholder="Email" required>
+            <input name="password" type="password" placeholder="Password" required>
+            <button>Login</button>
+        </form>
+        <a href="/register">Create a new family account</a>
+    {% endif %}
+</div>
+</body>
+</html>
