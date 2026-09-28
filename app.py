@@ -405,6 +405,7 @@ def reset_day():
     return redirect("/")
 
 
+setup_database()
+
 if __name__ == "__main__":
-    setup_database()
     app.run(host="0.0.0.0", port=5050, debug=True)
